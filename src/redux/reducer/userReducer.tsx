@@ -5,6 +5,7 @@ import axios from "axios";
 import {
   ACCESSTOKEN,
   USER_LOGIN,
+  getStoreJson,
   saveStorage,
   saveStoreJson,
 } from "../../utils/config";
@@ -17,7 +18,7 @@ export interface UserReducerState {
 }
 
 const initialState: UserReducerState = {
-  userLogin: null,
+  userLogin: getStoreJson(USER_LOGIN),
 };
 
 const userReducer = createSlice({
