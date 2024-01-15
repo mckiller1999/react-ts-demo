@@ -15,26 +15,29 @@ import Search from "./pages/Search";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import HomeTeamplate from "./templates/HomeTemplates";
-
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 export const history: any = createBrowserHistory();
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <HistoryRouter history={history}>
-    <Routes>
-      <Route path="" element={<HomeTeamplate />}>
-        <Route index element={<Home />}></Route>
-        <Route path="login" element={<Login />}></Route>
-        <Route path="register" element={<Register />}></Route>
-        <Route path="detail">
-          <Route path=":id" element={<Detail />}></Route>
+  <Provider store={store}>
+    <HistoryRouter history={history}>
+      <Routes>
+        <Route path="" element={<HomeTeamplate />}>
+          <Route index element={<Home />}></Route>
+          <Route path="login" element={<Login />}></Route>
+          <Route path="register" element={<Register />}></Route>
+          <Route path="detail">
+            <Route path=":id" element={<Detail />}></Route>
+          </Route>
+          <Route path="search" element={<Search />}></Route>
+          <Route path="cart" element={<Cart />}></Route>
+          <Route path="profile" element={<Profile />}></Route>
         </Route>
-        <Route path="search" element={<Search />}></Route>
-        <Route path="cart" element={<Cart />}></Route>
-        <Route path="rofile" element={<Profile />}></Route>
-      </Route>
-    </Routes>
-  </HistoryRouter>
+      </Routes>
+    </HistoryRouter>
+  </Provider>
 );
